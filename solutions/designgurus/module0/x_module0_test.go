@@ -23,3 +23,26 @@ func TestContainsDuplicate(t *testing.T) {
 		assert.Equal(t, test.expected, result)
 	}
 }
+
+func TestIsPangram(t *testing.T) {
+	tests := []struct {
+		input    string
+		expected bool
+	}{
+		{"The quick brown fox jumps over the lazy dog!1", true},
+		{"TheQuickBrownFoxJumpsOverTheLazyDog", true},
+		{"This is not a pangram", false},
+		{"Hello World!", false},
+		{"12 Pack my box with five dozen liquor jugs:123", true},
+		{"", false},
+		{"ABCDEFGHIJKLMNOPQRSTUVWXYZ", true},
+		{"abcdefghijklmnopqrstuvwxyz", true},
+	}
+
+	for _, test := range tests {
+		result := isPangram(test.input)
+		result1 := isPangram1(test.input)
+		assert.Equal(t, test.expected, result, "For input '%s'", test.input)
+		assert.Equal(t, test.expected, result1, "For input '%s'", test.input)
+	}
+}
