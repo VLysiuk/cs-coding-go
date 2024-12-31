@@ -67,3 +67,32 @@ func TestReverseVowels(t *testing.T) {
 		assert.Equal(t, test.expected, result, "For input '%s'", test.input)
 	}
 }
+
+func TestIsPalindrome(t *testing.T) {
+	tests := []struct {
+		input    string
+		expected bool
+	}{
+		{"racecar", true},
+		{"madam", true},
+		{"step on no pets", true},
+		{"hello", false},
+		{"", true},
+		{"A man, a plan, a canal, Panama", true},
+		{"No lemon, no melon", true},
+		{"Was it a car or a cat I saw?", true},
+		{"12321", true},
+		{"12345", false},
+		{"A man, a plan, a canal, Panama!", true},
+		{"Was it a car or a cat I saw?", true},
+		{"Hello World!", false},
+		{"!!??-@$%&", true},
+	}
+
+	for _, test := range tests {
+		result := isPalindrome(test.input)
+		result1 := isPalindrome1(test.input)
+		assert.Equal(t, test.expected, result, "For input '%s'", test.input)
+		assert.Equal(t, test.expected, result1, "For input '%s'", test.input)
+	}
+}
