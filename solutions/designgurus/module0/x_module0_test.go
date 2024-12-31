@@ -46,3 +46,24 @@ func TestIsPangram(t *testing.T) {
 		assert.Equal(t, test.expected, result1, "For input '%s'", test.input)
 	}
 }
+
+func TestReverseVowels(t *testing.T) {
+	tests := []struct {
+		input    string
+		expected string
+	}{
+		{"hello", "holle"},
+		{"leetcode", "leotcede"},
+		{"aA", "Aa"},
+		{"example", "example"},
+		{"", ""},
+		{"aeiou", "uoiea"},
+		{"racecar", "racecar"},
+		{"AEIOU", "UOIEA"},
+	}
+
+	for _, test := range tests {
+		result := reverseVowels(test.input)
+		assert.Equal(t, test.expected, result, "For input '%s'", test.input)
+	}
+}
