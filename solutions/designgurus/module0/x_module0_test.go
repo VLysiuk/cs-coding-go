@@ -96,3 +96,31 @@ func TestIsPalindrome(t *testing.T) {
 		assert.Equal(t, test.expected, result1, "For input '%s'", test.input)
 	}
 }
+
+func TestIsAnagram(t *testing.T) {
+	tests := []struct {
+		s        string
+		t        string
+		expected bool
+	}{
+		{"anagram", "nagaram", true},
+		{"rat", "car", false},
+		{"hello", "world", false},
+		{"listen", "silent", true},
+		{"", "", true},
+		{"a", "a", true},
+		{"a", "b", false},
+		{"rat", "tar", true},
+		{"aacc", "caac", true},
+		{"rat", "cat", false},
+	}
+
+	for _, test := range tests {
+		result := isAnagram(test.s, test.t)
+		result1 := isAnagram1(test.s, test.t)
+		result2 := isAnagram2(test.s, test.t)
+		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
+		assert.Equal(t, test.expected, result2)
+	}
+}
