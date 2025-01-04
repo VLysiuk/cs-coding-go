@@ -147,3 +147,26 @@ func TestShortestWordDistance(t *testing.T) {
 		assert.Equal(t, test.minDistance, result)
 	}
 }
+
+func TestNumGoodPairs(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{
+		{[]int{1, 2, 3, 1, 1, 3}, 4},
+		{[]int{1, 1, 1, 1}, 6},
+		{[]int{1, 2, 3}, 0},
+		{[]int{1, 2, 3, 4, 5, 6}, 0},
+		{[]int{1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5}, 5},
+		{[]int{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 45},
+	}
+
+	for _, test := range tests {
+		result := numGoodPairs(test.nums)
+		result1 := numGoodPairs1(test.nums)
+		result2 := numGoodPairs2(test.nums)
+		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
+		assert.Equal(t, test.expected, result2)
+	}
+}
