@@ -124,3 +124,26 @@ func TestIsAnagram(t *testing.T) {
 		assert.Equal(t, test.expected, result2)
 	}
 }
+
+func TestShortestWordDistance(t *testing.T) {
+	tests := []struct {
+		words       []string
+		word1       string
+		word2       string
+		minDistance int
+	}{
+		{[]string{"practice", "makes", "perfect", "coding", "makes"}, "coding", "practice", 3},
+		{[]string{"practice", "makes", "perfect", "coding", "makes"}, "makes", "coding", 1},
+		{[]string{"practice", "makes", "perfect", "coding", "makes"}, "practice", "makes", 1},
+		{[]string{"practice", "makes", "perfect", "coding", "makes"}, "coding", "makes", 1},
+		{[]string{}, "coding", "perfect", 0},
+		{[]string{"a", "b", "c", "d", "e"}, "a", "e", 4},
+		{[]string{"a", "c", "d", "b", "a", "c", "c", "a", "d", "b"}, "a", "b", 1},
+		{[]string{"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"}, "fox", "dog", 5},
+	}
+
+	for _, test := range tests {
+		result := shortestWordDistance(test.words, test.word1, test.word2)
+		assert.Equal(t, test.minDistance, result)
+	}
+}
