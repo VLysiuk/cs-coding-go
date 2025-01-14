@@ -22,6 +22,8 @@ func TestPairWithTargetSum(t *testing.T) {
 
 	for _, test := range tests {
 		result := pairWithTargetSum(test.arr, test.targetSum)
+		result1 := pairWithTargetSum1(test.arr, test.targetSum)
 		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
 	}
 }

@@ -27,4 +27,22 @@ func pairWithTargetSum(arr []int, targetSum int) []int {
 	return []int{-1, -1} // pair not found
 }
 
+// ==========Solution-2: Using a map==========
+// Time complexity: O(n)
+// space: O(n)
+
+func pairWithTargetSum1(arr []int, targetSum int) []int {
+	m := make(map[int]int)
+
+	for i, v := range arr {
+		if v1, ok := m[targetSum-v]; ok {
+			return []int{v1, i}
+		} else {
+			m[v] = i
+		}
+	}
+
+	return []int{-1, -1}
+}
+
 // =================================================================================
