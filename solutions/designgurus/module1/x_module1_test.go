@@ -27,3 +27,40 @@ func TestPairWithTargetSum(t *testing.T) {
 		assert.Equal(t, test.expected, result1)
 	}
 }
+
+func TestNonDuplicateCount(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		expected int
+	}{
+		{[]int{2, 3, 3, 3, 6, 9, 9}, 4},
+		{[]int{2, 2, 2, 11}, 2},
+		{[]int{1, 2, 2, 2}, 2},
+		{[]int{1, 2, 3, 3, 3, 4, 4, 5, 5}, 5},
+		{[]int{2}, 1},
+		{[]int{2, 2}, 1},
+		{[]int{2, 3}, 2},
+		{[]int{2, 3, 4}, 3},
+	}
+
+	for _, test := range tests {
+		result := findNonDuplicateCount(test.arr)
+		assert.Equal(t, test.expected, result)
+	}
+}
+
+func TestRemoveKey(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		key      int
+		expected int
+	}{
+		{[]int{3, 2, 3, 6, 3, 10, 9, 3}, 3, 4},
+		{[]int{2, 11, 2, 2, 1}, 2, 2},
+	}
+
+	for _, test := range tests {
+		result := removeKey(test.arr, test.key)
+		assert.Equal(t, test.expected, result)
+	}
+}
