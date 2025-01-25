@@ -64,3 +64,24 @@ func TestRemoveKey(t *testing.T) {
 		assert.Equal(t, test.expected, result)
 	}
 }
+
+func TestSquareSortedArray(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		expected []int
+	}{
+		{[]int{-2, -1, 0, 2, 3}, []int{0, 1, 4, 4, 9}},
+		{[]int{-3, -1, 0, 1, 2}, []int{0, 1, 1, 4, 9}},
+		{[]int{-3, -2, -1}, []int{1, 4, 9}},
+		{[]int{1, 2, 3}, []int{1, 4, 9}},
+		{[]int{0, 1, 2, 3}, []int{0, 1, 4, 9}},
+		{[]int{-3, -2, -1, 0}, []int{0, 1, 4, 9}},
+	}
+
+	for _, test := range tests {
+		result := squareSortedArray(test.arr)
+		result1 := squareSortedArray1(test.arr)
+		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
+	}
+}
