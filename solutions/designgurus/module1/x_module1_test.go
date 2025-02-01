@@ -104,3 +104,24 @@ func TestTripletSum(t *testing.T) {
 		assert.ElementsMatch(t, test.expected, result)
 	}
 }
+
+func TestTripletSumCloseToTarget(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		target   int
+		expected int
+	}{
+		{[]int{-2, 0, 1, 2}, 2, 1},
+		{[]int{-3, -1, 1, 2}, 1, 0},
+		{[]int{1, 0, 1, 1}, 100, 3},
+		{[]int{1, 2, 3, 4, 5}, 100, 12},
+		{[]int{1, 2, 3, 4, 5}, 10, 10},
+		{[]int{-1, 0, 2, 3}, 3, 2},
+		{[]int{39, -55, 11, 69, 4, -9, 6, 23}, -72, -60},
+	}
+
+	for _, test := range tests {
+		result := tripletsSumToTarget(test.arr, test.target)
+		assert.Equal(t, test.expected, result)
+	}
+}
