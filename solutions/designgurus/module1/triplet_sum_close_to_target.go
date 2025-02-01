@@ -13,7 +13,7 @@ import (
 
 // ==========Solution-1: Using two pointers==========
 // Time complexity: O(n^2)
-// space: O(1)
+// space: O(n)
 
 func tripletsSumToTarget(arr []int, targetSum int) int {
 	sort.Ints(arr)
