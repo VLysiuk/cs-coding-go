@@ -125,3 +125,23 @@ func TestTripletSumCloseToTarget(t *testing.T) {
 		assert.Equal(t, test.expected, result)
 	}
 }
+
+func TestTripletWithSmallerSum(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		target   int
+		expected int
+	}{
+		{[]int{-1, 0, 2, 3}, 3, 2},
+		{[]int{-1, 4, 2, 1, 3}, 5, 4},
+		{[]int{7, 4, 1, 2, 3}, 8, 2},
+		{[]int{1, 2, 3, 4, 5}, 10, 6},
+		{[]int{1, 2, 3, 4, 5}, 100, 10},
+		{[]int{2, 3, 4, 5}, 1, 0},
+	}
+
+	for _, test := range tests {
+		result := tripletsWithSmallerSum(test.arr, test.target)
+		assert.Equal(t, test.expected, result)
+	}
+}
