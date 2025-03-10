@@ -145,3 +145,21 @@ func TestTripletWithSmallerSum(t *testing.T) {
 		assert.Equal(t, test.expected, result)
 	}
 }
+
+func TestDutchNationalFlagSort(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		expected []int
+	}{
+		{[]int{1, 0, 2, 1, 0}, []int{0, 0, 1, 1, 2}},
+		{[]int{2, 2, 0, 1, 2, 0}, []int{0, 0, 1, 2, 2, 2}},
+		{[]int{2, 2, 0, 1, 1, 0}, []int{0, 0, 1, 1, 2, 2}},
+		{[]int{0, 0, 0, 0, 0}, []int{0, 0, 0, 0, 0}},
+		{[]int{1, 1, 1, 0, 1}, []int{0, 1, 1, 1, 1}},
+	}
+
+	for _, test := range tests {
+		result := dutchNationalFlagSort(test.arr)
+		assert.Equal(t, test.expected, result)
+	}
+}
