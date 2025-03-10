@@ -160,6 +160,8 @@ func TestDutchNationalFlagSort(t *testing.T) {
 
 	for _, test := range tests {
 		result := dutchNationalFlagSort(test.arr)
+		result1 := dutchNationalFlagSort1(test.arr)
 		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
 	}
 }

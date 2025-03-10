@@ -35,4 +35,27 @@ func dutchNationalFlagSort(arr []int) []int {
 	return arr
 }
 
+// ==========Solution-2: Using two pointers==========
+// Time complexity: O(n)
+// space: O(1)
+
+func dutchNationalFlagSort1(arr []int) []int {
+	low, high := 0, len(arr)-1
+
+	for i := 0; i <= high; {
+		if arr[i] == 0 {
+			arr[i], arr[low] = arr[low], arr[i]
+			i++
+			low++
+		} else if arr[i] == 1 {
+			i++
+		} else {
+			arr[i], arr[high] = arr[high], arr[i]
+			high--
+		}
+	}
+
+	return arr
+}
+
 // =================================================================================
