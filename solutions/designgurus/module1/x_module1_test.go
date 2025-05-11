@@ -184,3 +184,25 @@ func TestQuadrupleSumToTarget(t *testing.T) {
 		assert.ElementsMatch(t, test.expected, result)
 	}
 }
+
+func TestStringsWithBackspaces(t *testing.T) {
+	tests := []struct {
+		str1     string
+		str2     string
+		expected bool
+	}{
+		{"xy#z", "xzz#", true},
+		{"xy#z", "xyz#z#", false},
+		{"xp#", "xyz##", true},
+		{"xywrrmp", "xywrrmu#", false},
+		{"a#c", "b", false},
+		{"#", "#", true},
+		{"a##c", "#a#c", true},
+		{"ac###", "b#c#", true},
+	}
+
+	for _, test := range tests {
+		result := compareStringsWithBackspaces(test.str1, test.str2)
+		assert.Equal(t, test.expected, result)
+	}
+}
