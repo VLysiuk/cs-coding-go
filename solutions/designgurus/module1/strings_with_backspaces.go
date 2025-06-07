@@ -37,4 +37,49 @@ func cleanUpString(str string) []rune {
 	return stack
 }
 
+// ==========Solution-2: Using two pointers==========
+// Time complexity: O(n)
+// Space: O(1)
+func compareStringsWithBackspaces1(str1, str2 string) bool {
+	index1 := len(str1) - 1
+	index2 := len(str2) - 1
+
+	for index1 >= 0 || index2 >= 0 {
+		index1 = findNextValidCharIndex(str1, index1)
+		index2 = findNextValidCharIndex(str2, index2)
+
+		if index1 < 0 && index2 < 0 {
+			return true // both strings are equal
+		}
+
+		if index1 < 0 || index2 < 0 {
+			return false // one string is shorter than the other
+		}
+
+		if str1[index1] != str2[index2] {
+			return false // characters do not match
+		}
+
+		index1--
+		index2--
+	}
+	return true // all characters matched
+}
+
+func findNextValidCharIndex(str string, index int) int {
+	backspaceCount := 0
+
+	for index >= 0 {
+		if str[index] == '#' {
+			backspaceCount++
+		} else if backspaceCount > 0 {
+			backspaceCount--
+		} else {
+			return index
+		}
+		index--
+	}
+	return index
+}
+
 // =================================================================================

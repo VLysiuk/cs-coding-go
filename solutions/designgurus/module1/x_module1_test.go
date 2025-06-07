@@ -203,6 +203,8 @@ func TestStringsWithBackspaces(t *testing.T) {
 
 	for _, test := range tests {
 		result := compareStringsWithBackspaces(test.str1, test.str2)
+		result1 := compareStringsWithBackspaces1(test.str1, test.str2)
 		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
 	}
 }
