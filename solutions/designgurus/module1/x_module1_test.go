@@ -208,3 +208,22 @@ func TestStringsWithBackspaces(t *testing.T) {
 		assert.Equal(t, test.expected, result1)
 	}
 }
+
+func TestMinimumWindowSort(t *testing.T) {
+	tests := []struct {
+		arr      []int
+		expected int
+	}{
+		{[]int{1, 2, 3, 4, 5}, 0},
+		{[]int{2, 6, 4, 8, 10, 9, 15}, 5},
+		{[]int{1, 3, 2, 0, -1, 7, 10}, 5},
+		{[]int{1, 2, 3}, 0},
+		{[]int{3, 2, 1}, 3},
+		{[]int{1, 3, 3, 2}, 3},
+	}
+
+	for _, test := range tests {
+		result := minimumWindowSort(test.arr)
+		assert.Equal(t, test.expected, result)
+	}
+}
