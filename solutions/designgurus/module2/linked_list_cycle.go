@@ -10,7 +10,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-// ==========Solution-2: Using fast and slow pointers==========
+// ==========Solution-1: Using fast and slow pointers==========
 // Time complexity: O(n)
 // Space complexity: O(1)
 func hasCycle(head *ListNode) bool {

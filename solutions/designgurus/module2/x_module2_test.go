@@ -55,3 +55,19 @@ func TestLinkedListCycle(t *testing.T) {
 		assert.Equal(t, test.expected, result)
 	}
 }
+
+func TestFindMiddle(t *testing.T) {
+	tests := []struct {
+		head     *ListNode
+		expected int
+	}{
+		{&ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: nil}}}, 2},
+		{&ListNode{Val: 1, Next: &ListNode{Val: 2, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4, Next: nil}}}}, 3},
+		{&ListNode{Val: 1}, 1},
+	}
+
+	for _, test := range tests {
+		middle := findMiddle(test.head)
+		assert.Equal(t, test.expected, middle.Val)
+	}
+}
