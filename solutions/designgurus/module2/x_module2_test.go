@@ -71,3 +71,37 @@ func TestFindMiddle(t *testing.T) {
 		assert.Equal(t, test.expected, middle.Val)
 	}
 }
+func TestDetectCycleStart(t *testing.T) {
+	tests := []struct {
+		head     *ListNode
+		expected int
+	}{
+		{
+			func() *ListNode {
+				head := &ListNode{Val: 1}
+				second := &ListNode{Val: 2}
+				third := &ListNode{Val: 3}
+				head.Next = second
+				second.Next = third
+				third.Next = second // creates a cycle
+				return head
+			}(),
+			2, // starting node of the cycle
+		},
+		{
+			func() *ListNode {
+				head := &ListNode{Val: 1}
+				second := &ListNode{Val: 2}
+				head.Next = second
+				second.Next = head // creates a cycle
+				return head
+			}(),
+			1, // starting node of the cycle
+		},
+	}
+
+	for _, test := range tests {
+		cycleStart := detectCycle(test.head)
+		assert.Equal(t, test.expected, cycleStart.Val)
+	}
+}
