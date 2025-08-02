@@ -102,6 +102,8 @@ func TestDetectCycleStart(t *testing.T) {
 
 	for _, test := range tests {
 		cycleStart := detectCycle(test.head)
+		cycleStart1 := detectCycle1(test.head)
 		assert.Equal(t, test.expected, cycleStart.Val)
+		assert.Equal(t, test.expected, cycleStart1.Val)
 	}
 }

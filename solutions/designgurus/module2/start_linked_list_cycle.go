@@ -28,3 +28,28 @@ func detectCycle(head *ListNode) *ListNode {
 
 	return cycleStart
 }
+
+// ==========Solution-2: Using fast and slow pointers==========
+// Time complexity: O(n)
+// Space complexity: O(1)
+func detectCycle1(head *ListNode) *ListNode {
+	fast := head
+	slow := head
+
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+
+		if fast == slow {
+			break
+		}
+	}
+	slow = head
+
+	for slow != fast {
+		slow = slow.Next
+		fast = fast.Next
+	}
+
+	return slow
+}
