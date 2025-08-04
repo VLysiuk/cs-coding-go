@@ -107,3 +107,23 @@ func TestDetectCycleStart(t *testing.T) {
 		assert.Equal(t, test.expected, cycleStart1.Val)
 	}
 }
+
+func TestIsHappyNumber(t *testing.T) {
+	tests := []struct {
+		num      int
+		expected bool
+	}{
+		{19, true},
+		{2, false},
+		{7, true},
+		{1, true},
+		{0, false},
+		{23, true},
+		{12, false},
+	}
+
+	for _, test := range tests {
+		result := isHappy(test.num)
+		assert.Equal(t, test.expected, result)
+	}
+}
