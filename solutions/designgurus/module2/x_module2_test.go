@@ -124,6 +124,8 @@ func TestIsHappyNumber(t *testing.T) {
 
 	for _, test := range tests {
 		result := isHappy(test.num)
+		result1 := isHappy1(test.num)
 		assert.Equal(t, test.expected, result)
+		assert.Equal(t, test.expected, result1)
 	}
 }

@@ -39,4 +39,35 @@ func squareNum(num int) int {
 	return result
 }
 
+// ==========Solution-2: Using fast and slow pointers==========
+// Time complexity: O(n)
+// Space complexity: O(1)
+func isHappy1(num int) bool {
+	fast := num
+	slow := num
+
+	for {
+		fast = squareN(fast)
+		fast = squareN(fast)
+		slow = squareN(slow)
+		if fast == slow {
+			break
+		}
+	}
+
+	return slow == 1
+}
+
+func squareN(num int) int {
+	result := 0
+
+	for num != 0 {
+		r := num % 10
+		result += r * r
+		num = (num - r) / 10
+	}
+
+	return result
+}
+
 // =================================================================================
